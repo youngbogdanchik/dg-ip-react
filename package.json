@@ -4,13 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "../dg-ip-react - Copy/node_modules/.bin/vite",
-    "build": "../dg-ip-react - Copy/node_modules/.bin/tsc && vite build",
-    "preview": "../dg-ip-react - Copy/node_modules/.bin/vite preview",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "lint": "yarn lint:style && yarn lint:deps && yarn lint:ts",
-    "lint:style": "../dg-ip-react - Copy/node_modules/.bin/eslint src --ext .js,.jsx,.ts,.tsx",
-    "lint:deps": "../dg-ip-react - Copy/node_modules/.bin/depcruise --config .dependency-cruiser.cjs src --output-type err-long",
-    "lint:ts": "../dg-ip-react - Copy/node_modules/.bin/tsc --noEmit"
+    "lint:style": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:deps": "depcruise --config .dependency-cruiser.cjs src --output-type err-long",
+    "lint:ts": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.2.0",
