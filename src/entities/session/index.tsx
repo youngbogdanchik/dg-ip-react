@@ -1,2 +1,1 @@
-export { AuthButton } from './ui/AuthButton';
-export { LogoutButton } from './ui/LogoutButton';
+export { apiAuth } from './api/apiAuth';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import Routing from '../pages';
+import Routing from './routing';
 
 const App = () => {
   return (
