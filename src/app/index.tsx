@@ -1,8 +1,13 @@
 import React from 'react';
-import '../App.css';
+import { Container } from '@mui/material';
+import Routing from '../pages';
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <Container>
+      <Routing />
+    </Container>
+  );
+};
 
 export default App;

@@ -1,11 +1,9 @@
 import React from 'react';
 
-const AuthButton = () => {
+export const LogoutButton = () => {
   return (
     <div>
 
     </div>
   );
 };
-
-export default AuthButton;
