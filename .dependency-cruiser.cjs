@@ -127,7 +127,7 @@ module.exports = {
           '^(v8/tools/csvparser)$',
           '^(v8/tools/logreader)$',
           '^(v8/tools/profile_view)$',
-          '^(v8/tools/profile)$',
+          '^(v8/tools/auth)$',
           '^(v8/tools/SourceMap)$',
           '^(v8/tools/splaytree)$',
           '^(v8/tools/tickprocessor-driver)$',
