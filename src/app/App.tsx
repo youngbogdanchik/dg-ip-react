@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '../shared/ui/kit/mui';
+import { Container } from 'shared/ui/kit/mui';
 import Routing from './routing';
 
 const App = () => {
