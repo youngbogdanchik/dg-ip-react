@@ -1,1 +1,1 @@
-export * as routing from './routing';
+export * from './paths';

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container } from 'shared/ui/kit/mui';
-import { Router } from 'pages/router';
+import { Routing } from 'pages';
 
 const App = () => {
   return (
     <Container>
-      <Router />
+      <Routing />
     </Container>
   );
 };
