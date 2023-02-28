@@ -1,1 +1,6 @@
-export const paths = { root: '/', home: { root: '/home' } };
+export const paths = {
+  root: '/',
+  home: {
+    root: '/home',
+  },
+};

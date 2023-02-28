@@ -1,13 +1,11 @@
 import React from 'react';
-import { Container } from 'shared/ui/kit/mui';
+import { Container } from 'shared/ui';
 import { Routing } from 'pages';
 
-const App = () => {
+export const App = () => {
   return (
     <Container>
       <Routing />
     </Container>
   );
 };
-
-export default App;
