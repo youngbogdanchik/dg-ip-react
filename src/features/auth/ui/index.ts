@@ -1,2 +1,2 @@
-export { AuthButton } from './AuthButton';
-export { LogoutButton } from './LogoutButton';
+export { AuthButton } from './auth-button';
+export { LogoutButton } from './logout-button';
