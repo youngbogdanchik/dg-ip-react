@@ -1,18 +1,26 @@
-import { createDomain, createEffect } from 'effector';
+import { createDomain, createEffect, createEvent, sample } from 'effector';
 import { login, logout, isAuthenticated, getUser } from './api';
 import { User } from './types';
 
 const domain = createDomain('entities/session');
 
-export const loginFx = createEffect(login);
-export const logoutFx = createEffect(logout);
-export const isAuthenticatedFx = createEffect(isAuthenticated);
-export const getUserFx = createEffect(getUser);
-export const $auth = domain
-  .createStore(false)
-  .on(isAuthenticatedFx.doneData, (_, isAuth) => isAuth);
+export const loginRequested = createEvent();
+export const logoutRequested = createEvent();
+export const isAuthenticatedRequested = createEvent();
 
-export const $user = domain
-  .createStore<User>({})
-  .on(logoutFx.doneData, () => ({}))
-  .on(getUserFx.doneData, (_, obj) => obj);
+const loginFx = createEffect(login);
+const logoutFx = createEffect(logout);
+const isAuthenticatedFx = createEffect(isAuthenticated);
+const getUserFx = createEffect(getUser);
+
+sample({ clock: loginRequested, target: loginFx });
+sample({ clock: logoutRequested, target: logoutFx });
+sample({ clock: isAuthenticatedRequested, target: isAuthenticatedFx });
+sample({ clock: isAuthenticatedFx.doneData, target: getUserFx });
+
+export const $auth = domain.createStore<boolean>(false);
+export const $user = domain.createStore<User>({});
+
+$auth.on(isAuthenticatedFx.doneData, (_, isAuth) => isAuth);
+
+$user.on(getUserFx.doneData, (_, obj) => obj);

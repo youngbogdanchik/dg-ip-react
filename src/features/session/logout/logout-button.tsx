@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'shared/ui';
-import { logoutFx } from 'entities/session';
+import { logoutRequested } from 'entities/session';
 
 export const LogoutButton = () => {
-  const logoutHandler = async () => {
-    await logoutFx();
+  const logoutHandler = () => {
+    logoutRequested();
   };
 
   return (

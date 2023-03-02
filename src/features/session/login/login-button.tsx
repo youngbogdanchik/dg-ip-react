@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'shared/ui';
-import { loginFx } from 'entities/session';
+import { loginRequested } from 'entities/session';
 
 export const LoginButton = () => {
-  const loginHandler = async () => {
-    await loginFx();
+  const loginHandler = () => {
+    loginRequested();
   };
 
   return (
