@@ -1,6 +1,6 @@
 import { createDomain, sample } from 'effector';
 import { getCurrentUser, logout } from './api';
-import { CurrentUser } from 'entities/session/model/types';
+import { CurrentUser } from './types';
 
 const domain = createDomain('entities/session');
 

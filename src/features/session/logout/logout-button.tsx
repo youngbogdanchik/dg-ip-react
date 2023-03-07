@@ -1,14 +1,10 @@
 import React from 'react';
 import { Button } from 'shared/ui';
-import { logoutRequested } from './model';
+import * as model from './model';
 
 export const LogoutButton = () => {
-  const logoutHandler = () => {
-    logoutRequested();
-  };
-
   return (
-    <Button variant="contained" color="error" onClick={logoutHandler}>
+    <Button variant="contained" color="error" onClick={() => model.logoutRequested()}>
       Logout
     </Button>
   );

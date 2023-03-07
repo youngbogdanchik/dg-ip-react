@@ -1,17 +1,13 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js';
-import { auth } from 'shared/config';
+import { auth0Config } from 'shared/config';
 import { CurrentUser } from 'entities/session/model/types';
 
-const whenAuth0Client = createAuth0Client(auth);
+const whenAuth0Client = createAuth0Client(auth0Config);
 
 export const logout = async () => {
   const auth0Client = await whenAuth0Client;
 
-  try {
-    await auth0Client.logout();
-  } catch (err) {
-    return Promise.reject(new Error(`Not authenticated: ${err}`));
-  }
+  await auth0Client.logout();
 };
 
 export const getCurrentUser = async (): Promise<CurrentUser> => {

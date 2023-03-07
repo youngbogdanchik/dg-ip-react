@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Container } from 'shared/ui';
 import { Routing } from 'pages';
-import { appMounted } from 'entities/session';
+import { sessionModel } from 'entities/session';
 
 export const App = () => {
-  useEffect(() => {
-    appMounted();
+  React.useEffect(() => {
+    sessionModel.appMounted();
   }, []);
 
   return (

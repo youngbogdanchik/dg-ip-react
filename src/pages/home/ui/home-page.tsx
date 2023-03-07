@@ -1,11 +1,11 @@
 import React from 'react';
-import { LogoutButton } from 'features/session';
-import { $user } from 'entities/session';
-import { Grid, Box, Typography } from 'shared/ui';
 import { useStore } from 'effector-react';
+import { LogoutButton } from 'features/session';
+import { sessionModel } from 'entities/session';
+import { Grid, Box, Typography } from 'shared/ui';
 
-export const Home = () => {
-  const user = useStore($user);
+export const HomePage = () => {
+  const user = useStore(sessionModel.$user);
 
   return (
     <Grid
