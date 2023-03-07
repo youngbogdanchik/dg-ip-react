@@ -1,7 +1,7 @@
 import { createDomain } from 'effector';
+import { createGate } from 'effector-react';
 import { getCurrentUser, logout } from './api';
 import { CurrentUser } from './types';
-import { createGate } from 'effector-react';
 
 const domain = createDomain('entities/session');
 
