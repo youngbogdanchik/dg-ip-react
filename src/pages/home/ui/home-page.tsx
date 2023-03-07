@@ -1,12 +1,10 @@
 import React from 'react';
-import { LoginButton } from 'features/session';
 import { LogoutButton } from 'features/session';
-import { $auth, $user } from 'entities/session';
+import { $user } from 'entities/session';
 import { Grid, Box, Typography } from 'shared/ui';
 import { useStore } from 'effector-react';
 
 export const Home = () => {
-  const isAuth = useStore($auth);
   const user = useStore($user);
 
   return (
@@ -19,7 +17,7 @@ export const Home = () => {
       style={{ minHeight: '100vh' }}
     >
       <Grid item xs={3}>
-        {isAuth ? (
+        {user ? (
           <Box
             sx={{
               display: 'flex',
@@ -38,7 +36,14 @@ export const Home = () => {
             <LogoutButton />
           </Box>
         ) : (
-          <LoginButton />
+          <Typography
+            sx={{
+              display: 'inline-block',
+            }}
+            variant="h4"
+          >
+            Not authorized
+          </Typography>
         )}
       </Grid>
     </Grid>

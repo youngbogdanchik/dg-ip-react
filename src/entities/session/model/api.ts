@@ -1,44 +1,48 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { auth } from 'shared/config';
+import { CurrentUser } from 'entities/session/model/types';
 
-const auth0 = await createAuth0Client(auth);
-
-export const login = async () => {
-  try {
-    await auth0.loginWithRedirect();
-  } catch (err) {
-    console.error('Log in failed', err);
-  }
-};
+const whenAuth0Client = createAuth0Client(auth);
 
 export const logout = async () => {
-  try {
-    await auth0.logout();
-  } catch (e) {
-    console.error(e);
-  }
-};
+  const auth0Client = await whenAuth0Client;
 
-export const isAuthenticated = async () => {
   try {
-    const isAuth = await auth0.isAuthenticated();
-
-    if (!isAuth) {
-      await auth0.handleRedirectCallback();
-      window.history.replaceState({}, '', '/home');
-      return true;
-    } else {
-      return isAuth;
-    }
+    await auth0Client.logout();
   } catch (err) {
-    return false;
+    return Promise.reject(new Error(`Not authenticated: ${err}`));
   }
 };
 
-export const getUser = async () => {
-  try {
-    return await auth0.getUser();
-  } catch (e) {
-    console.error(e);
+export const getCurrentUser = async (): Promise<CurrentUser> => {
+  const auth0Client = await whenAuth0Client;
+  const isAuth = await auth0Client.isAuthenticated();
+
+  if (isAuth) {
+    return getUser();
   }
+
+  if (isRedirected()) {
+    await auth0Client.handleRedirectCallback();
+    return getUser();
+  }
+
+  await auth0Client.loginWithRedirect();
+
+  throw new Error('Authorization error');
+};
+
+const getUser = async (): Promise<CurrentUser> => {
+  const auth0Client = await whenAuth0Client;
+  const user = await auth0Client.getUser();
+
+  return {
+    nickname: user?.nickname || '',
+  };
+};
+
+const isRedirected = () => {
+  const query = window.location.search;
+
+  return query.includes('code=') && query.includes('state=');
 };

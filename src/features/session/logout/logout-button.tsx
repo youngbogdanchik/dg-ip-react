@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'shared/ui';
-import { logoutRequested } from 'entities/session';
+import { logoutRequested } from './model';
 
 export const LogoutButton = () => {
   const logoutHandler = () => {

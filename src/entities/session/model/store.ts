@@ -1,26 +1,16 @@
-import { createDomain, createEffect, createEvent, sample } from 'effector';
-import { login, logout, isAuthenticated, getUser } from './api';
-import { User } from './types';
+import { createDomain, sample } from 'effector';
+import { getCurrentUser, logout } from './api';
+import { CurrentUser } from 'entities/session/model/types';
 
 const domain = createDomain('entities/session');
 
-export const loginRequested = createEvent();
-export const logoutRequested = createEvent();
-export const isAuthenticatedRequested = createEvent();
+export const appMounted = domain.event();
 
-const loginFx = createEffect(login);
-const logoutFx = createEffect(logout);
-const isAuthenticatedFx = createEffect(isAuthenticated);
-const getUserFx = createEffect(getUser);
+export const logoutFx = domain.effect(logout);
+const getCurrentUserFx = domain.effect(getCurrentUser);
 
-sample({ clock: loginRequested, target: loginFx });
-sample({ clock: logoutRequested, target: logoutFx });
-sample({ clock: isAuthenticatedRequested, target: isAuthenticatedFx });
-sample({ clock: isAuthenticatedFx.doneData, target: getUserFx });
+export const $user = domain.store<CurrentUser | null>(null);
 
-export const $auth = domain.createStore<boolean>(false);
-export const $user = domain.createStore<User>({});
+sample({ clock: appMounted, target: getCurrentUserFx });
 
-$auth.on(isAuthenticatedFx.doneData, (_, isAuth) => isAuth);
-
-$user.on(getUserFx.doneData, (_, obj) => obj);
+$user.on(getCurrentUserFx.doneData, (_, obj) => obj || null);
