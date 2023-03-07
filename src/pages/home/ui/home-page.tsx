@@ -14,7 +14,7 @@ export const HomePage = () => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ minHeight: '100vh' }}
+      sx={{ minHeight: '100vh' }}
     >
       <Grid item xs={3}>
         {user ? (
@@ -22,7 +22,7 @@ export const HomePage = () => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px',
+              gap: 10,
             }}
           >
             <Typography
