@@ -13,4 +13,4 @@ export const $user = domain.store<CurrentUser | null>(null);
 
 sample({ clock: appMounted, target: getCurrentUserFx });
 
-$user.on(getCurrentUserFx.doneData, (_, obj) => obj || null);
+$user.on(getCurrentUserFx.doneData, (_, obj) => obj);
