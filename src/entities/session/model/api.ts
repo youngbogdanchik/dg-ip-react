@@ -33,6 +33,7 @@ const getUser = async (): Promise<CurrentUser> => {
   const user = await auth0Client.getUser();
 
   return {
+    id: user?.sub || '',
     nickname: user?.nickname || '',
   };
 };

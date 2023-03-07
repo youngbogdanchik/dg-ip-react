@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'shared/ui';
-import * as model from './model';
+import * as model from '../model';
 
 export const LogoutButton = () => {
   return (

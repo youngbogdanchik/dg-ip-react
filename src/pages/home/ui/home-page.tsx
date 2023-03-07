@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStore } from 'effector-react';
-import { LogoutButton } from 'features/session';
+import { LogoutButton } from 'features/session/logout';
 import { sessionModel } from 'entities/session';
 import { Grid, Box, Typography } from 'shared/ui';
 

@@ -1,7 +1,7 @@
-import { createDomain } from 'effector';
-import { createGate } from 'effector-react';
+import { createDomain, sample } from 'effector';
 import { getCurrentUser, logout } from './api';
 import { CurrentUser } from './types';
+import { createGate } from 'effector-react';
 
 const domain = createDomain('entities/session');
 
@@ -12,6 +12,6 @@ const getCurrentUserFx = domain.effect(getCurrentUser);
 
 export const $user = domain.store<CurrentUser | null>(null);
 
-Gate.open(getCurrentUserFx());
+sample({ clock: Gate.open, target: getCurrentUserFx });
 
 $user.on(getCurrentUserFx.doneData, (_, obj) => obj);
