@@ -22,7 +22,7 @@ export const HomePage = () => {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: 10,
+              gap: 1.5,
             }}
           >
             <Typography
