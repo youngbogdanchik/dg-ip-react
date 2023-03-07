@@ -1,6 +1,6 @@
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { auth0Config } from 'shared/config';
-import { CurrentUser } from 'entities/session/model/types';
+import { CurrentUser } from './types';
 
 const whenAuth0Client = createAuth0Client(auth0Config);
 
