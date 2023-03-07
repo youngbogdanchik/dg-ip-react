@@ -5,6 +5,6 @@ const domain = createDomain('features/session/logout');
 
 export const logoutRequested = domain.event();
 
-const logoutFx = attach({ effect: sessionModel.logoutFx })
+const logoutFx = attach({ effect: sessionModel.logoutFx });
 
 sample({ clock: logoutRequested, target: logoutFx });
