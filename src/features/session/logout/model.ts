@@ -8,3 +8,4 @@ export const logoutRequested = domain.event();
 const logoutFx = attach({ effect: sessionModel.logoutFx });
 
 sample({ clock: logoutRequested, target: logoutFx });
+sample({ clock: logoutFx.done, target: sessionModel.sessionClosed });

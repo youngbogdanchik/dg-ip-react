@@ -5,7 +5,13 @@ import { createGate } from 'effector-react';
 
 const domain = createDomain('entities/session');
 
+domain.onCreateStore((store) => {
+  store.reset(sessionClosed);
+});
+
 export const Gate = createGate();
+
+export const sessionClosed = domain.event();
 
 export const logoutFx = domain.effect(logout);
 const getCurrentUserFx = domain.effect(getCurrentUser);
